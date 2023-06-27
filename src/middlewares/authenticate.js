@@ -6,7 +6,7 @@ export const authenticate= (req,res,next) => {
         next(err);
         if(!user) {
             return res.status(401).json({
-                messsage:'Unauthorise access '
+                messsage:'Unauthorised access '
             })
         }
         console.log(req)

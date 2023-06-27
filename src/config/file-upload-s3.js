@@ -1,20 +1,22 @@
 import multer from "multer";
 import multerS3 from "multer-s3"
 import aws from "aws-sdk"
+import dotenv from "dotenv";
 
+dotenv.config();
 
 
 aws.config.update({
-    region:"us-east-1",
-    secretAccessKey: "yCGT34nZw6AXXKdwvG2sfddvhG4n9ybmYQDu87XO",
-    accessKeyId: "AKIAUOKS4THPL6Y4YNWQ"
+    region:process.env.REGION,
+    secretAccessKey: process.env.SECRETACCESSKEY,
+    accessKeyId: process.env.ACCESSKEY,
 })
 
  const s3 = new aws.S3()
 const upload = multer({
     storage: multerS3({
       s3: s3,
-      bucket: 'twitterbucketjdjd',
+      bucket: process.env.BUCKETNAME,
       acl:'public-read',
       metadata: function (req, file, cb) {
         cb(null, {fieldName: file.fieldname});

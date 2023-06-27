@@ -22,14 +22,8 @@ export const createTweet = async ( req,res ) => {
                 message:"Successfully created a tweet",
                 data: response,
                 err:{}
-            });
-            
-        })
-        
-        
-
-
-        
+            });  
+        })     
     }
     catch(error) {
         return res.status(500).json({
